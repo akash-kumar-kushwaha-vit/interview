@@ -5,7 +5,7 @@ const InterviewContext = createContext(null);
 export const InterviewProvider = ({ children }) => {
   const [interviewType, setInterviewType] = useState("hr");
   const [currentQuestionId, setCurrentQuestionId] = useState("hr_1");
-  const [backendUrl, setBackendUrl] = useState("http://localhost:8000");
+  const [backendUrl, setBackendUrl] = useState(import.meta.env.VITE_BACKEND_URL || "http://localhost:8000");
   const [lmStudioUrl, setLmStudioUrl] = useState("http://localhost:1234");
   const [history, setHistory] = useState([]);
   const [technicalCritiques, setTechnicalCritiques] = useState([]);

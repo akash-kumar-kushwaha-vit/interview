@@ -137,6 +137,9 @@ app.include_router(report.router, prefix="/api/report", tags=["Report"])
 app.include_router(voice.router, prefix="/api/voice", tags=["Voice"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
 
+import os
+
 if __name__ == "__main__":
-    # Start the server on port 8000
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Start the server dynamically on the assigned PORT, fallback to 8000
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
